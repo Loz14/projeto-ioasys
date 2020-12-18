@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Row, FormGroup, FormControl, ControlLabel, Button, HelpBlock } from 'react-bootstrap';
+import { FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
+import Button from '@material-ui/core/Button';
 import './login.css';
 import logo from './../../assets/logo-home.png'
 import logo2x from './../../assets/logo-home@2x.png'
@@ -81,9 +82,6 @@ class Login extends Component {
 
         return (
             <div className="Login">
-                <head>
-                    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-                </head>
                 <div className="container">
                     <div className="card">
                         <div className="centralize div-logo">
@@ -97,8 +95,8 @@ class Login extends Component {
                         <div className="centralize subtitulo">
                             <p>Lorem ipsum dolor sit amet, contetur adipiscing elit. Nunc accumsan.</p>
                         </div>
-                        <div className="login">
-                            <form onSubmit={this.login}>
+                        <div className="centralize login">
+                            <form style={{width: '70%'}} onSubmit={this.login}>
                                 <FormGroup controlId="email" validationState={formSubmitted ? (errors.email ? 'error' : 'success') : null}>
                                     <ControlLabel>Email</ControlLabel>
                                     <FormControl type="text" name="email" placeholder="Enter your email" onChange={this.handleInputChange} />
@@ -113,7 +111,9 @@ class Login extends Component {
                                         <HelpBlock>{errors.password}</HelpBlock>
                                     }
                                 </FormGroup>
-                                <Button type="submit" bsStyle="primary">Sign-In</Button>
+                                <div className="centralize button">
+                                    <Button id="btn-entrar" variant="contained">ENTRAR</Button>
+                                </div>
                             </form>
                         </div>
                     </div>
