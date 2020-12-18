@@ -1,0 +1,82 @@
+p {
+    font-family: 'Roboto';
+}
+
+.Login {
+    background-color: #eeecdb;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    align-items: center
+}
+
+.card {
+    height: 40em;
+    width: 30em;
+    display: grid;
+    grid-template-columns: repeat(1, 100%);
+    grid-template-rows: repeat(6, 16.66%);
+    grid-template-areas: "logo""titulo""subtitulo""login""login""button";
+}
+
+.centralize {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-logo {
+    grid-area: logo;
+    align-items: flex-start;
+    object-fit: contain;
+}
+
+.titulo {
+    font-weight: bold;
+    letter-spacing: -1.2px;
+    align-items: flex-end;
+    color: #383743;
+    grid-area: titulo;
+    text-align: center;
+}
+
+.titulo p {
+    width: 10em;
+    font-size: 1.7em;
+}
+
+.subtitulo {
+    grid-area: subtitulo;
+    text-align: center;
+    line-height: 1.48;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 0.2px;
+    align-items: flex-start;
+    color:  #383743;
+}
+
+.subtitulo p{
+    width: 20em;
+    font-size: 1.2em;
+}
+
+.logo_home {
+    width: 26rem;
+    object-fit: contain;
+}
+
+.login {
+    grid-area: login;
+}
