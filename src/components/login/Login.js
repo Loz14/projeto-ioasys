@@ -1,13 +1,10 @@
 import React from "react";
 import clsx from 'clsx';
-import { FormControl, InputAdornment, Input, IconButton, Button } from '@material-ui/core';
 import './../login/login.css';
+import { FormControl, InputAdornment, Input, IconButton, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import logo from './../../assets/logo-home.png'
-import logo2x from './../../assets/logo-home@2x.png'
-import logo3x from './../../assets/logo-home@3x.png'
 import { MailOutline, Visibility, VisibilityOff, LockOpen } from '@material-ui/icons';
-// import { isEmail, isEmpty, isLength, isContainWhiteSpace } from 'shared/validator';
+import { isEmail, isEmpty, isLength, isContainWhiteSpace } from 'shared/validator';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,14 +42,58 @@ function Login() {
         event.preventDefault();
     };
 
+    const validateLoginForm = (e) => {
+
+        let errors = {};
+        const { email, password } = values;
+
+        if (isEmpty(email)) {
+            errors.email = "Email é um campo obrigatório";
+        } else if (!isEmail(email)) {
+            errors.email = "Por favor insira um email válido";
+        }
+
+        if (isEmpty(password)) {
+            errors.password = "Senha é um campo obrigatório";
+        } else if (isContainWhiteSpace(password)) {
+            errors.password = "A senha não deve conter espaços em branco";
+        } else if (!isLength(password, { gte: 6, lte: 16, trim: true })) {
+            errors.password = "O comprimento da senha deve ser entre 6 a 16";
+        }
+
+        if (isEmpty(errors)) {
+            return true;
+        } else {
+            return errors;
+        }
+    };
+
+    const login = (e) => {
+
+        e.preventDefault();
+
+        let errors = validateLoginForm();
+
+        if (errors === true) {
+            alert("You are successfully signed in...");
+            window.location.reload()
+        } else {
+            const error = {
+                errors: errors,
+                formSubmitted: true
+            };
+            console.error(error)
+        }
+    };
+
     return (
         <div className="Login">
             <div className="container">
                 <div className="card">
                     <div className="centralize div-logo">
-                        <img src={logo}
-                            srcset={logo2x, logo3x}
-                            class="logo_home" />
+                        <img src={require('./../../assets/logo-home.png')}
+                            srcSet={`${require('./../../assets/logo-home@2x.png')} 2x, ${require('./../../assets/logo-home@3x.png')} 3x`} alt=""
+                            className="logo_home" />
                     </div>
                     <div className="centralize titulo">
                         <p>BEM-VINDO AO EMPRESAS</p>
@@ -101,7 +142,7 @@ function Login() {
                         </FormControl>
                     </div>
                     <div className="centralize button">
-                        <Button id="btn-entrar" variant="contained">ENTRAR</Button>
+                        <Button onClick={login} id="btn-entrar" variant="contained">ENTRAR</Button>
                     </div>
                 </div>
             </div>
