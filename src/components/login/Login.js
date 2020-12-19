@@ -6,10 +6,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import { MailOutline, Visibility, VisibilityOff, LockOpen } from '@material-ui/icons';
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from 'shared/validator';
 
+//import das logos
 const small = require('./../../assets/logo-home.png')
 const medium = require('./../../assets/logo-home@2x.png')
 const large = require('./../../assets/logo-home@3x.png')
 
+//Classe implementada para deixar imagem responsiva
 class ResponsiveImage extends React.Component {
 
     state = { currentSrc: '' };
@@ -27,6 +29,7 @@ class ResponsiveImage extends React.Component {
     }
 }
 
+//styles utilizados dentro do FormControl
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -43,15 +46,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+//função Login
 function Login() {
     const classes = useStyles();
     const [values, setValues] = React.useState({
         email: '',
         password: '',
         showPassword: false,
-        errors: { email: '', password: '' }
+        errors: { email: '', password: '', valid: '' }
     });
 
+    //mapeia eventos dos inputs como mostrar e esconder senha
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
     };
@@ -64,6 +69,7 @@ function Login() {
         event.preventDefault();
     };
 
+    //confere campos e retorna erros, caso existam
     const validateLoginForm = (e) => {
 
         let errors = {};
@@ -90,6 +96,8 @@ function Login() {
         }
     };
 
+
+    //função chamada ao clicar em entrar
     const login = (e) => {
 
         e.preventDefault();
@@ -97,8 +105,19 @@ function Login() {
         let errors = validateLoginForm();
 
         if (errors === true) {
-            alert("You are successfully signed in...");
-            window.location.reload()
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: values.email, password: values.password })
+            };
+            fetch('https://empresas.ioasys.com.br/api/v1/users/auth/sign_in', requestOptions)
+                .then(response => response.json())
+                .then(data => this.setState({ postId: data.id })).catch(error => setValues({
+                    ...values,
+                    errors: {
+                        valid: 'Credenciais informadas são inválidas, tente novamente.'
+                    }
+                }))
         } else {
             setValues({
                 ...values,
@@ -124,7 +143,7 @@ function Login() {
                         <p>Lorem ipsum dolor sit amet, contetur adipiscing elit. Nunc accumsan.</p>
                     </div>
                     <div className="centralize">
-                        <FormControl id="email" className={clsx(classes.margin, classes.withoutLabel, classes.textField)} error={values.errors.email}>
+                        <FormControl id="email" className={clsx(classes.margin, classes.withoutLabel, classes.textField)} error={values.errors.email !== '' && values.errors.valid !== '' ? true : false}>
                             <Input
                                 value={values.email}
                                 onChange={handleChange('email')}
@@ -141,7 +160,7 @@ function Login() {
                         </FormControl>
                     </div>
                     <div className="centralize">
-                        <FormControl id="password" className={clsx(classes.margin, classes.textField)} error={values.errors.password}>
+                        <FormControl id="password" className={clsx(classes.margin, classes.textField)} error={values.errors.password !== '' && values.errors.valid !== '' ? true : false}>
                             <Input
                                 type={values.showPassword ? 'text' : 'password'}
                                 value={values.password}
@@ -163,6 +182,7 @@ function Login() {
                                 }
                             />
                             <FormHelperText id="component-error-text">{values.errors.password}</FormHelperText>
+                            <FormHelperText id="component-error-text">{values.errors.valid}</FormHelperText>
                         </FormControl>
                     </div>
                     <div className="centralize button">
