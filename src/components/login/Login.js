@@ -6,6 +6,27 @@ import { makeStyles } from '@material-ui/core/styles';
 import { MailOutline, Visibility, VisibilityOff, LockOpen } from '@material-ui/icons';
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from 'shared/validator';
 
+const small = require('./../../assets/logo-home.png')
+const medium = require('./../../assets/logo-home@2x.png')
+const large = require('./../../assets/logo-home@3x.png')
+
+class ResponsiveImage extends React.Component {
+    
+    state = { currentSrc: '' };
+
+    onLoad = (event) => {
+        this.setState({
+            currentSrc: event.target.currentSrc
+        });
+    }
+
+    render() {
+        return (
+            <img src={small} srcSet={`${small} 300w, ${medium} 768w, ${large} 1280w`} alt="" className="logo-home" onLoad={this.onLoad} />
+        );
+    }
+}
+
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -91,9 +112,7 @@ function Login() {
             <div className="container">
                 <div className="card">
                     <div className="centralize div-logo">
-                        <img src={require('./../../assets/logo-home.png')}
-                            srcSet={`${require('./../../assets/logo-home@2x.png')} 2x, ${require('./../../assets/logo-home@3x.png')} 3x`} alt=""
-                            className="logo_home" />
+                        <ResponsiveImage />
                     </div>
                     <div className="centralize titulo">
                         <p>BEM-VINDO AO EMPRESAS</p>
