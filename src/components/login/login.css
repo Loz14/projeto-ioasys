@@ -72,6 +72,10 @@
     object-fit: contain;
 }
 
+#component-error-text{
+    color: #ff0f44;
+}
+
 #email {
     grid-area: email;
 }

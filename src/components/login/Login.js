@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from 'clsx';
 import './../login/login.css';
-import { FormControl, InputAdornment, Input, IconButton, Button } from '@material-ui/core';
+import { FormControl, InputAdornment, Input, IconButton, Button, FormHelperText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { MailOutline, Visibility, VisibilityOff, LockOpen } from '@material-ui/icons';
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from 'shared/validator';
@@ -11,7 +11,7 @@ const medium = require('./../../assets/logo-home@2x.png')
 const large = require('./../../assets/logo-home@3x.png')
 
 class ResponsiveImage extends React.Component {
-    
+
     state = { currentSrc: '' };
 
     onLoad = (event) => {
@@ -49,6 +49,7 @@ function Login() {
         email: '',
         password: '',
         showPassword: false,
+        errors: { email: '', password: '' }
     });
 
     const handleChange = (prop) => (event) => {
@@ -99,11 +100,13 @@ function Login() {
             alert("You are successfully signed in...");
             window.location.reload()
         } else {
-            const error = {
-                errors: errors,
-                formSubmitted: true
-            };
-            console.error(error)
+            setValues({
+                ...values,
+                errors: {
+                    email: errors.email,
+                    password: errors.password
+                }
+            })
         }
     };
 
@@ -121,7 +124,7 @@ function Login() {
                         <p>Lorem ipsum dolor sit amet, contetur adipiscing elit. Nunc accumsan.</p>
                     </div>
                     <div className="centralize">
-                        <FormControl id="email" className={clsx(classes.margin, classes.withoutLabel, classes.textField)}>
+                        <FormControl id="email" className={clsx(classes.margin, classes.withoutLabel, classes.textField)} error={values.errors.email}>
                             <Input
                                 value={values.email}
                                 onChange={handleChange('email')}
@@ -134,10 +137,11 @@ function Login() {
                                     'aria-label': 'email',
                                 }}
                             />
+                            <FormHelperText id="component-error-text">{values.errors.email}</FormHelperText>
                         </FormControl>
                     </div>
                     <div className="centralize">
-                        <FormControl id="password" className={clsx(classes.margin, classes.textField)}>
+                        <FormControl id="password" className={clsx(classes.margin, classes.textField)} error={values.errors.password}>
                             <Input
                                 type={values.showPassword ? 'text' : 'password'}
                                 value={values.password}
@@ -158,6 +162,7 @@ function Login() {
                                     </InputAdornment>
                                 }
                             />
+                            <FormHelperText id="component-error-text">{values.errors.password}</FormHelperText>
                         </FormControl>
                     </div>
                     <div className="centralize button">
