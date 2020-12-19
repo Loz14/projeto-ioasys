@@ -22,7 +22,7 @@
     display: grid;
     grid-template-columns: repeat(1, 100%);
     grid-template-rows: repeat(6, 16.66%);
-    grid-template-areas: "logo""titulo""subtitulo""login""login""button";
+    grid-template-areas: "logo""titulo""subtitulo""email""password""button";
 }
 
 .centralize {
@@ -69,16 +69,33 @@
 }
 
 .logo_home {
-    width: 24rem;
+    width: 18rem;
     object-fit: contain;
 }
 
-.login {
-    grid-area: login;
+#email {
+    grid-area: email;
+}
+
+#password {
+    grid-area: password;
 }
 
 .button {
     grid-area: button;
+}
+
+.medium-pink {
+    color: #ee4c77;
+}
+
+.icon {
+    font-size: 22px !important;
+    margin-bottom: 5px;
+}
+
+.charcoal-grey {
+    color: #383743;
 }
 
 #btn-entrar {
@@ -88,7 +105,7 @@
     font-weight: 600;
     letter-spacing: 2px;
     text-align: center;
-    width: 100%;
     border-radius: 3.9px;
-    height: 3.563rem;
+    height: 3em;
+    width: 70%;
 }

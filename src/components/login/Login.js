@@ -1,126 +1,112 @@
-import React, { Component } from "react";
-import { FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
-import Button from '@material-ui/core/Button';
-import './login.css';
+import React from "react";
+import clsx from 'clsx';
+import { FormControl, InputAdornment, Input, IconButton, Button } from '@material-ui/core';
+import './../login/login.css';
+import { makeStyles } from '@material-ui/core/styles';
 import logo from './../../assets/logo-home.png'
 import logo2x from './../../assets/logo-home@2x.png'
 import logo3x from './../../assets/logo-home@3x.png'
-import { isEmail, isEmpty, isLength, isContainWhiteSpace } from 'shared/validator';
+import { MailOutline, Visibility, VisibilityOff, LockOpen } from '@material-ui/icons';
+// import { isEmail, isEmpty, isLength, isContainWhiteSpace } from 'shared/validator';
 
-class Login extends Component {
+const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    margin: {
+        margin: theme.spacing(1),
+    },
+    withoutLabel: {
+        marginTop: theme.spacing(3),
+    },
+    textField: {
+        width: '70%',
+    },
+}));
 
-    constructor(props) {
-        super(props)
+function Login() {
+    const classes = useStyles();
+    const [values, setValues] = React.useState({
+        email: '',
+        password: '',
+        showPassword: false,
+    });
 
-        this.state = {
-            formData: {}, // Contains login form data
-            errors: {}, // Contains login field errors
-            formSubmitted: false, // Indicates submit status of login form
-            loading: false // Indicates in progress state of login form
-        }
-    }
+    const handleChange = (prop) => (event) => {
+        setValues({ ...values, [prop]: event.target.value });
+    };
 
-    handleInputChange = (event) => {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
+    const handleClickShowPassword = () => {
+        setValues({ ...values, showPassword: !values.showPassword });
+    };
 
-        let { formData } = this.state;
-        formData[name] = value;
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
 
-        this.setState({
-            formData: formData
-        });
-    }
-
-    validateLoginForm = (e) => {
-
-        let errors = {};
-        const { formData } = this.state;
-
-        if (isEmpty(formData.email)) {
-            errors.email = "Email can't be blank";
-        } else if (!isEmail(formData.email)) {
-            errors.email = "Please enter a valid email";
-        }
-
-        if (isEmpty(formData.password)) {
-            errors.password = "Password can't be blank";
-        } else if (isContainWhiteSpace(formData.password)) {
-            errors.password = "Password should not contain white spaces";
-        } else if (!isLength(formData.password, { gte: 6, lte: 16, trim: true })) {
-            errors.password = "Password's length must between 6 to 16";
-        }
-
-        if (isEmpty(errors)) {
-            return true;
-        } else {
-            return errors;
-        }
-    }
-
-    login = (e) => {
-
-        e.preventDefault();
-
-        let errors = this.validateLoginForm();
-
-        if (errors === true) {
-            alert("You are successfully signed in...");
-            window.location.reload()
-        } else {
-            this.setState({
-                errors: errors,
-                formSubmitted: true
-            });
-        }
-    }
-
-    render() {
-
-        const { errors, formSubmitted } = this.state;
-
-        return (
-            <div className="Login">
-                <div className="container">
-                    <div className="card">
-                        <div className="centralize div-logo">
-                            <img src={logo}
-                                srcset={logo2x, logo3x}
-                                class="logo_home" />
-                        </div>
-                        <div className="centralize titulo">
-                            <p>BEM-VINDO AO EMPRESAS</p>
-                        </div>
-                        <div className="centralize subtitulo">
-                            <p>Lorem ipsum dolor sit amet, contetur adipiscing elit. Nunc accumsan.</p>
-                        </div>
-                        <div className="centralize login">
-                            <form style={{width: '70%'}} onSubmit={this.login}>
-                                <FormGroup controlId="email" validationState={formSubmitted ? (errors.email ? 'error' : 'success') : null}>
-                                    <ControlLabel>Email</ControlLabel>
-                                    <FormControl type="text" name="email" placeholder="Enter your email" onChange={this.handleInputChange} />
-                                    {errors.email &&
-                                        <HelpBlock>{errors.email}</HelpBlock>
-                                    }
-                                </FormGroup>
-                                <FormGroup controlId="password" validationState={formSubmitted ? (errors.password ? 'error' : 'success') : null}>
-                                    <ControlLabel>Password</ControlLabel>
-                                    <FormControl type="password" name="password" placeholder="Enter your password" onChange={this.handleInputChange} />
-                                    {errors.password &&
-                                        <HelpBlock>{errors.password}</HelpBlock>
-                                    }
-                                </FormGroup>
-                                <div className="centralize button">
-                                    <Button id="btn-entrar" variant="contained">ENTRAR</Button>
-                                </div>
-                            </form>
-                        </div>
+    return (
+        <div className="Login">
+            <div className="container">
+                <div className="card">
+                    <div className="centralize div-logo">
+                        <img src={logo}
+                            srcset={logo2x, logo3x}
+                            class="logo_home" />
+                    </div>
+                    <div className="centralize titulo">
+                        <p>BEM-VINDO AO EMPRESAS</p>
+                    </div>
+                    <div className="centralize subtitulo">
+                        <p>Lorem ipsum dolor sit amet, contetur adipiscing elit. Nunc accumsan.</p>
+                    </div>
+                    <div className="centralize">
+                        <FormControl id="email" className={clsx(classes.margin, classes.withoutLabel, classes.textField)}>
+                            <Input
+                                value={values.email}
+                                onChange={handleChange('email')}
+                                startAdornment={
+                                    <InputAdornment position="start">
+                                        <MailOutline className="icon medium-pink" />
+                                    </InputAdornment>
+                                }
+                                inputProps={{
+                                    'aria-label': 'email',
+                                }}
+                            />
+                        </FormControl>
+                    </div>
+                    <div className="centralize">
+                        <FormControl id="password" className={clsx(classes.margin, classes.textField)}>
+                            <Input
+                                type={values.showPassword ? 'text' : 'password'}
+                                value={values.password}
+                                onChange={handleChange('password')}
+                                startAdornment={
+                                    <InputAdornment position="start">
+                                        <LockOpen className="icon medium-pink" />
+                                    </InputAdornment>
+                                }
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={handleMouseDownPassword}
+                                        >
+                                            {values.showPassword ? <Visibility className="icon charcoal-grey" /> : <VisibilityOff className="icon charcoal-grey" />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                            />
+                        </FormControl>
+                    </div>
+                    <div className="centralize button">
+                        <Button id="btn-entrar" variant="contained">ENTRAR</Button>
                     </div>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default Login;
