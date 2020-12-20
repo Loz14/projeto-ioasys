@@ -17,7 +17,7 @@
 
 ### 💻 Sobre
 
-Projeto Empresas - é uma um teste proposto pela empresa ioasys onde terá que ser feito um login utilizando de OAuth 2.0 para autenticação
+Projeto Empresas - É um teste proposto pela empresa ioasys onde terá que ser feito um login utilizando de OAuth 2.0 para autenticação
 e uma listagem de algumas empresas através de um campo de busca!
 
 ---
