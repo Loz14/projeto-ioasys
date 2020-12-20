@@ -4,9 +4,8 @@
 <p align="center">
  <a href="#sobre">Sobre</a> •
  <a href="#layout">Layout</a> • 
+ <a href="#requisites">Pré-requisitos</a> • 
  <a href="#tecnologias">Tecnologias</a> • 
- <a href="#contribuicao">Contribuição</a> • 
- <a href="#licenc-a">Licença</a> • 
  <a href="#autor">Autor</a>
 </p>
 
@@ -16,14 +15,14 @@
 
 ---
 
-## 💻 Sobre o projeto
+### 💻 Sobre
 
 Projeto Empresas - é uma um teste proposto pela empresa ioasys onde terá que ser feito um login utilizando de OAuth 2.0 para autenticação
 e uma listagem de algumas empresas através de um campo de busca!
 
 ---
 
-## 🎨 Layout
+### 🎨 Layout
 
 Layout e recortes disponíveis no Zeplin:
 -   **(https://app.zeplin.io/)**
@@ -55,7 +54,7 @@ $ npm start
 ```
 ---
 
-## 🛠 Tecnologias
+### 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
