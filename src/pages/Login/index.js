@@ -1,13 +1,14 @@
 import React from "react";
 import clsx from 'clsx';
 import './style.css';
-import { FormControl, InputAdornment, Input, IconButton, Button, FormHelperText } from '@material-ui/core';
+import { FormControl, InputAdornment, Input, IconButton, Button, FormHelperText, CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { MailOutline, Visibility, VisibilityOff, LockOpen } from '@material-ui/icons';
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from 'shared/validator';
 import API from '../../services/api';
 import { useHistory } from 'react-router-dom'
 import api from "../../services/api";
+
 
 
 //import das logos
@@ -61,6 +62,8 @@ function Login() {
         errors: { email: '', password: '', valid: '' }
     });
 
+    const [loading, setLoading] = React.useState(false);
+
     //mapeia eventos dos inputs como mostrar e esconder senha
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -104,27 +107,33 @@ function Login() {
 
     //função chamada ao clicar em entrar
     const login = (e) => {
-
+        setLoading(true);
         e.preventDefault();
 
         let errors = validateLoginForm();
 
         if (errors === true) {
             API.post(`users/auth/sign_in`, { email: values.email, password: values.password })
-            .then(res => {
-                api.defaults.headers.common['access-token'] = res.headers['access-token']
-                api.defaults.headers.common['uid'] = res.headers['uid']
-                api.defaults.headers.common['client'] = res.headers['client']
-                console.log(api.defaults)
-                history.push('/enterprise')
-            })
-            .catch(error => setValues({
-                    ...values,
-                    errors: {
-                        valid: 'Credenciais informadas são inválidas, tente novamente.'
-                    }
-                }))
+                .then(res => {
+                    api.defaults.headers.common['access-token'] = res.headers['access-token']
+                    api.defaults.headers.common['uid'] = res.headers['uid']
+                    api.defaults.headers.common['client'] = res.headers['client']
+                    console.log(api.defaults)
+                    setLoading(false);
+                    history.push('/enterprise')
+
+                })
+                .catch(error => {
+                    setLoading(false);
+                    setValues({
+                        ...values,
+                        errors: {
+                            valid: 'Credenciais informadas são inválidas, tente novamente.'
+                        }
+                    })
+                })
         } else {
+            setLoading(false);
             setValues({
                 ...values,
                 errors: {
@@ -137,8 +146,9 @@ function Login() {
 
     return (
         <div className="Login">
+            {loading ? <div id="overlay"> <CircularProgress style={{width: '65px', height: '65px', color: '#57bbbc'}} /> </div> : null}
             <div className="container">
-                <div className="card">
+                <div className="card-login">
                     <div className="centralize div-logo">
                         <ResponsiveImage />
                     </div>
