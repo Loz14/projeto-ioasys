@@ -2,8 +2,8 @@
 <p align="center">projeto teste da empresa ioasys focado em ReactJS</p>
 
 <p align="center">
- <a href="#objetivo">Objetivo</a> •
- <a href="#roadmap">Roadmap</a> • 
+ <a href="#sobre">Sobre</a> •
+ <a href="#layout">Layout</a> • 
  <a href="#tecnologias">Tecnologias</a> • 
  <a href="#contribuicao">Contribuição</a> • 
  <a href="#licenc-a">Licença</a> • 
@@ -14,6 +14,23 @@
 	🚧  Projeto Empresas 🚀 Em construção...  🚧
 </h4>
 
+---
+
+## 💻 Sobre o projeto
+
+Projeto Empresas - é uma um teste proposto pela empresa ioasys onde terá que ser feito um login utilizando de OAuth 2.0 para autenticação
+e uma listagem de algumas empresas através de um campo de busca!
+
+---
+
+## 🎨 Layout
+
+Layout e recortes disponíveis no Zeplin:
+-   **(https://app.zeplin.io/)**
+-   **usuário: teste_web**
+-   **senha: teste_ioasys**
+---
+
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
@@ -21,7 +38,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
 ### 🎲 Rodando o projeto
-
+```bash
 # Clone este repositório
 $ git clone <https://github.com/Loz14/projeto-ioasys>
 
@@ -35,9 +52,22 @@ $ npm install
 $ npm start
 
 # O servidor inciará na porta:3000 - acesse <http://localhost:3000>
-
-### Autor
+```
 ---
+
+## 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+#### **Website**  [React](https://reactjs.org/)
+
+-   **[React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)**
+-   **[React Icons](https://react-icons.github.io/react-icons/)**
+-   **[Axios](https://github.com/axios/axios)**
+-   **[React Material](https://material-ui.com/pt/)**
+
+---
+### Autor
 
 <a href="https://www.linkedin.com/in/la-carvalho/">
  <img style="border-radius: 50%;" src="https://avatars1.githubusercontent.com/u/51300546?s=400&u=3933e0767a90751ca7c6fb1e4ea2feccbe1d3d54&v=4" width="100px;" alt=""/>
