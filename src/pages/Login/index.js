@@ -1,10 +1,14 @@
 import React from "react";
 import clsx from 'clsx';
-import './../login/login.css';
+import './style.css';
 import { FormControl, InputAdornment, Input, IconButton, Button, FormHelperText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { MailOutline, Visibility, VisibilityOff, LockOpen } from '@material-ui/icons';
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from 'shared/validator';
+import API from '../../services/api';
+import { useHistory } from 'react-router-dom'
+import api from "../../services/api";
+
 
 //import das logos
 const small = require('./../../assets/logo-home.png')
@@ -48,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 
 //função Login
 function Login() {
+    const history = useHistory();
     const classes = useStyles();
     const [values, setValues] = React.useState({
         email: '',
@@ -105,14 +110,15 @@ function Login() {
         let errors = validateLoginForm();
 
         if (errors === true) {
-            const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: values.email, password: values.password })
-            };
-            fetch('https://empresas.ioasys.com.br/api/v1/users/auth/sign_in', requestOptions)
-                .then(response => response.json())
-                .then(data => this.setState({ postId: data.id })).catch(error => setValues({
+            API.post(`users/auth/sign_in`, { email: values.email, password: values.password })
+            .then(res => {
+                api.defaults.headers.common['access-token'] = res.headers['access-token']
+                api.defaults.headers.common['uid'] = res.headers['uid']
+                api.defaults.headers.common['client'] = res.headers['client']
+                console.log(api.defaults)
+                history.push('/enterprise')
+            })
+            .catch(error => setValues({
                     ...values,
                     errors: {
                         valid: 'Credenciais informadas são inválidas, tente novamente.'
