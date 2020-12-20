@@ -8,31 +8,7 @@ import { isEmail, isEmpty, isLength, isContainWhiteSpace } from 'shared/validato
 import API from '../../services/api';
 import { useHistory } from 'react-router-dom'
 import api from "../../services/api";
-
-
-
-//import das logos
-const small = require('./../../assets/logo-home.png')
-const medium = require('./../../assets/logo-home@2x.png')
-const large = require('./../../assets/logo-home@3x.png')
-
-//Classe implementada para deixar imagem responsiva
-class ResponsiveImage extends React.Component {
-
-    state = { currentSrc: '' };
-
-    onLoad = (event) => {
-        this.setState({
-            currentSrc: event.target.currentSrc
-        });
-    }
-
-    render() {
-        return (
-            <img src={small} srcSet={`${small} 300w, ${medium} 768w, ${large} 1280w`} alt="" className="logo-home" onLoad={this.onLoad} />
-        );
-    }
-}
+import ResponsiveImage from "../../components/ResponsiveImage";
 
 //styles utilizados dentro do FormControl
 const useStyles = makeStyles((theme) => ({
@@ -150,7 +126,7 @@ function Login() {
             <div className="container">
                 <div className="card-login">
                     <div className="centralize div-logo">
-                        <ResponsiveImage />
+                        <ResponsiveImage type="home" />
                     </div>
                     <div className="centralize titulo">
                         <p>BEM-VINDO AO EMPRESAS</p>

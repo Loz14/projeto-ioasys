@@ -2,5 +2,29 @@
     background-color: #eeecdb;
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    overflow: auto;
+}
+
+.container-cards{
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    text-align: center;
+}
+
+.header {
+    height: 80px;
+    width: 100%;
+    background-image: linear-gradient(177deg, #ee4c77 47%, #0e0531 140%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-btn {
+    color: #fff;
+}
+
+.header-logo {
+    margin: 0px 10px;
 }

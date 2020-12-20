@@ -67,11 +67,6 @@
     font-size: 1.2em;
 }
 
-.logo-home {
-    width: 16rem;
-    object-fit: contain;
-}
-
 #component-error-text{
     color: #ff0f44;
 }

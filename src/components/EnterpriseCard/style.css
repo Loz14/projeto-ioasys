@@ -1,0 +1,21 @@
+.card-enterprise {
+    border-radius: 4.7px;
+    background-color: #fff;
+    height: 100px;
+    width: 21em;
+    padding: 10px;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 10px;
+}
+
+.card-desc {
+    width: 30%;
+    height: 100%;
+}
+
+.card-img {
+    width: 70%;
+    height: 100%;
+}
