@@ -52,6 +52,10 @@ $ npm start
 
 # O servidor inciará na porta:3000 - acesse <http://localhost:3000>
 ```
+### Integrações API
+-   **Servidor: http://empresas.ioasys.com.br**
+-   **Usuário de Teste: testeapple@ioasys.com.br**
+-   **Senha de Teste: 12341234**
 ---
 
 ### 🛠 Tecnologias
