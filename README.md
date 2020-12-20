@@ -2,10 +2,10 @@
 <p align="center">projeto teste da empresa ioasys focado em ReactJS</p>
 
 <p align="center">
- <a href="#sobre">Sobre</a> •
- <a href="#layout">Layout</a> • 
- <a href="#requisites">Pré-requisitos</a> • 
- <a href="#tecnologias">Tecnologias</a> • 
+ <a href="#-sobre">Sobre</a> •
+ <a href="#-layout">Layout</a> • 
+ <a href="#pré-requisitos">Pré-requisitos</a> • 
+ <a href="#-tecnologias">Tecnologias</a> • 
  <a href="#autor">Autor</a>
 </p>
 
