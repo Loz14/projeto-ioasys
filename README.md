@@ -10,7 +10,7 @@
 </p>
 
 <h4 align="center"> 
-	🚧  Projeto Empresas 🚀 Em construção...  🚧
+	✔️ Projeto Empresas 🚀 Finalizado ✔️
 </h4>
 
 ---
