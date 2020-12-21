@@ -2,13 +2,17 @@ import React from 'react'
 import './style.css'
 
 const EnterpriseCard = props => {
-    const { photo, enterprise_name, country, enterprise_type } = props
+    const { photo, enterprise_name, country, enterprise_type, enterprise } = props
     const { enterprise_type_name } = enterprise_type
 
     const srcPhoto = 'https://empresas.ioasys.com.br/' + photo;
 
+    const activeCard = () => {
+        props.onCardChange(enterprise)
+    }
+
     return (
-        <div className="card-enterprise">
+        <div onClick={e => activeCard()} className="card-enterprise">
             <div className="card-img">
                 <img src={srcPhoto} alt="" className="photo-card" />
             </div>
