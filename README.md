@@ -1,73 +1,84 @@
 <h1 align="center">Projeto Empresas</h1>
 <p align="center">projeto teste da empresa ioasys focado em ReactJS</p>
 
-# Getting Started with Create React App
+<p align="center">
+ <a href="#-sobre">Sobre</a> •
+ <a href="#-layout">Layout</a> • 
+ <a href="#pré-requisitos">Pré-requisitos</a> • 
+ <a href="#-tecnologias">Tecnologias</a> • 
+ <a href="#autor">Autor</a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h4 align="center"> 
+	🚧  Projeto Empresas 🚀 Em construção...  🚧
+</h4>
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+### 💻 Sobre
 
-### `npm start`
+Projeto Empresas - É um teste proposto pela empresa ioasys onde terá que ser feito um login utilizando de OAuth 2.0 para autenticação
+e uma listagem de algumas empresas através de um campo de busca!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 🎨 Layout
 
-### `npm test`
+Layout e recortes disponíveis no Zeplin:
+-   **(https://app.zeplin.io/)**
+-   **usuário: teste_web**
+-   **senha: teste_ioasys**
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Pré-requisitos
 
-### `npm run build`
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [ReactJS](https://pt-br.reactjs.org/). 
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🎲 Rodando o projeto
+```bash
+# Clone este repositório
+$ git clone <https://github.com/Loz14/projeto-ioasys>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Acesse a pasta do projeto no terminal/cmd
+$ cd projeto-ioasys
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Instale as dependências
+$ npm install
 
-### `npm run eject`
+# Execute a aplicação em modo de desenvolvimento
+$ npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# O servidor inciará na porta:3000 - acesse <http://localhost:3000>
+```
+### Integrações API
+-   **Servidor: http://empresas.ioasys.com.br**
+-   **Usuário de Teste: testeapple@ioasys.com.br**
+-   **Senha de Teste: 12341234**
+---
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🛠 Tecnologias
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+As seguintes ferramentas foram usadas na construção do projeto:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### **Website**  [React](https://reactjs.org/)
 
-## Learn More
+-   **[React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)**
+-   **[React Icons](https://react-icons.github.io/react-icons/)**
+-   **[Axios](https://github.com/axios/axios)**
+-   **[React Material](https://material-ui.com/pt/)**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
+### Autor
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<a href="https://www.linkedin.com/in/la-carvalho/">
+ <img style="border-radius: 50%;" src="https://avatars1.githubusercontent.com/u/51300546?s=400&u=3933e0767a90751ca7c6fb1e4ea2feccbe1d3d54&v=4" width="100px;" alt=""/>
+ <br />
+ <sub><b>Luiz André Carvalho</b></sub></a> <a href="https://github.com/Loz14">🚀</a>
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Feito por Luiz André 👋🏽 Entre em contato!
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[![Linkedin Badge](https://img.shields.io/badge/-Luiz-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/la-carvalho/)](https://www.linkedin.com/in/la-carvalho/) 
+[![Gmail Badge](https://img.shields.io/badge/-luizandre.ita@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:luizandre.ita@gmail.com)](mailto:luizandre.ita@gmail.com)
