@@ -1,9 +1,9 @@
 .card-enterprise {
     border-radius: 4.7px;
     background-color: #fff;
-    height: 100px;
-    width: 21em;
-    padding: 10px;
+    height: 150px;
+    width: 450px;
+    padding: 20px;
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
@@ -11,11 +11,43 @@
 }
 
 .card-desc {
-    width: 30%;
+    width: calc(60% - 20px);
     height: 100%;
+    text-align: left;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .card-img {
-    width: 70%;
+    width: 40%;
     height: 100%;
+}
+
+.photo-card{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.country-card{
+    font-size: 12px;
+    color: #8d8c8c;
+}
+
+.name-card {
+    color: #1a0e49;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.desc-card {
+    font-size: 14px;
+    color: #8d8c8c;
+}
+
+.block{
+    width: 100%;
+    display: block;
+    float: left;
 }

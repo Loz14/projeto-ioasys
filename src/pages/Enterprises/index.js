@@ -9,7 +9,7 @@ import { FormControl, InputAdornment, Input, Button, CircularProgress } from '@m
 const Enterprises = () => {
     const [enterprise, setEnterprise] = useState([])
     const [search, setSearch] = useState('')
-    
+
     const getEnterprises = async () => {
         try {
             const response = await api.get('enterprises', {
@@ -20,6 +20,7 @@ const Enterprises = () => {
                 }
             })
             setEnterprise(response.data.enterprise)
+
         } catch (error) {
 
         }
@@ -46,7 +47,7 @@ const Enterprises = () => {
             })
             setEnterprise(response.data.enterprises)
         } catch (error) {
-            
+
         }
 
     }
@@ -55,27 +56,27 @@ const Enterprises = () => {
         <div className="Enterprise">
             { enterprise.length > 0 ?
                 <div style={{ justifyContent: "center" }} className="header">
-                    <FormControl style={{width: '50em'}}>
+                    <FormControl style={{ width: '50em' }}>
                         <Input
                             value={search}
                             onChange={searchChange}
                             onKeyPress={handleKeyPress}
                             startAdornment={
                                 <InputAdornment position="start">
-                                    <SearchIcon htmlColor="#fff"/>
+                                    <SearchIcon htmlColor="#fff" />
                                 </InputAdornment>
                             }
                         />
                     </FormControl>
                 </div>
-                : 
+                :
                 <div className="header">
                     <div></div>
                     <div className="header-logo">
                         <ResponsiveImage type="nav" />
                     </div>
                     <div className="header-btn">
-                        <Button onClick={getEnterprises} ><SearchIcon htmlColor="#fff"/></Button>
+                        <Button onClick={getEnterprises} ><SearchIcon htmlColor="#fff" /></Button>
                     </div>
                 </div>
             }
