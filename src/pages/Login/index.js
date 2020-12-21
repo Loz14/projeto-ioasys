@@ -27,18 +27,23 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+//verifica a existência de um login anterior e completa os inputs
+const getValuesFromStorage = () => {
+    return JSON.parse(localStorage.getItem('keep-logged'))
+}
+
 //função Login
 function Login() {
     const history = useHistory();
     const classes = useStyles();
+    const [loading, setLoading] = React.useState(false);
+    const info = getValuesFromStorage();
     const [values, setValues] = React.useState({
-        email: '',
-        password: '',
+        email: (info.email || ''),
+        password: (info.password || ''),
         showPassword: false,
         errors: { email: '', password: '', valid: '' }
     });
-
-    const [loading, setLoading] = React.useState(false);
 
     //mapeia eventos dos inputs como mostrar e esconder senha
     const handleChange = (prop) => (event) => {
@@ -52,6 +57,8 @@ function Login() {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
+
 
     //confere campos e retorna erros, caso existam
     const validateLoginForm = (e) => {
@@ -101,6 +108,7 @@ function Login() {
                     api.defaults.headers.common['uid'] = res.headers['uid']
                     api.defaults.headers.common['client'] = res.headers['client']
                     setLoading(false);
+                    localStorage.setItem('keep-logged', JSON.stringify({ email: values.email, password: values.password }))
                     history.push('/enterprise')
 
                 })
