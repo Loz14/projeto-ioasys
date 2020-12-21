@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './style.css'
 //import das logos
 const small = require('./../../assets/logo-home.png')
@@ -13,11 +13,6 @@ const largeNav = require('./../../assets/logo-nav@3x.png')
 //Classe implementada para deixar imagem responsiva
 const ResponsiveImage = props => {
     const {type} = props
-    const [currentSrc, setCurrentSrc] = useState('')
-
-    const onLoad = (event) => {
-        setCurrentSrc(event.target.currentSrc);
-    }
 
     let smallImg
     let mediumImg
@@ -34,7 +29,7 @@ const ResponsiveImage = props => {
     }
 
     return (
-        <img src={smallImg} srcSet={`${smallImg} 300w, ${mediumImg} 768w, ${largeImg} 1280w`} alt="" className="logo-home" onLoad={onLoad} />
+        <img src={smallImg} srcSet={`${smallImg} 300w, ${mediumImg} 768w, ${largeImg} 1280w`} alt="" className="logo-home" />
     );
 }
 

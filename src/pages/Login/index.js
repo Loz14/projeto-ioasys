@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import clsx from 'clsx';
 import './style.css';
-import { FormControl, InputAdornment, Input, IconButton, Button, FormHelperText, CircularProgress } from '@material-ui/core';
+import { FormControl, InputAdornment, Input, IconButton, Button, FormHelperText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { MailOutline, Visibility, VisibilityOff, LockOpen } from '@material-ui/icons';
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from 'shared/validator';

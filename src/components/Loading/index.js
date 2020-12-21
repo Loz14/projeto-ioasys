@@ -1,5 +1,5 @@
 import { CircularProgress } from '@material-ui/core'
-import React, { useState } from 'react'
+import React from 'react'
 import './style.css'
 
 const Loading = () => {
