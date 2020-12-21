@@ -80,6 +80,12 @@ function Login() {
         }
     };
 
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            login(event)
+        }
+    }
+
 
     //função chamada ao clicar em entrar
     const login = (e) => {
@@ -94,7 +100,6 @@ function Login() {
                     api.defaults.headers.common['access-token'] = res.headers['access-token']
                     api.defaults.headers.common['uid'] = res.headers['uid']
                     api.defaults.headers.common['client'] = res.headers['client']
-                    console.log(api.defaults)
                     setLoading(false);
                     history.push('/enterprise')
 
@@ -122,7 +127,7 @@ function Login() {
 
     return (
         <div className="Login">
-            {loading ? <div id="overlay"> <CircularProgress style={{width: '65px', height: '65px', color: '#57bbbc'}} /> </div> : null}
+            {loading ? <div id="overlay"> <CircularProgress style={{ width: '65px', height: '65px', color: '#57bbbc' }} /> </div> : null}
             <div className="container">
                 <div className="card-login">
                     <div className="centralize div-logo">
@@ -157,6 +162,7 @@ function Login() {
                                 type={values.showPassword ? 'text' : 'password'}
                                 value={values.password}
                                 onChange={handleChange('password')}
+                                onKeyPress={handleKeyPress}
                                 startAdornment={
                                     <InputAdornment position="start">
                                         <LockOpen className="icon medium-pink" />
