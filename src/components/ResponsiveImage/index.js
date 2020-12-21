@@ -22,7 +22,7 @@ const ResponsiveImage = props => {
     let smallImg
     let mediumImg
     let largeImg
-
+    //faz a verificação do tipo de logo que será renderizada e atribuí a correta
     if (type === 'nav') {
         smallImg = smallNav
         mediumImg = mediumNav

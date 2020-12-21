@@ -7,6 +7,9 @@ const EnterpriseCard = props => {
 
     const srcPhoto = 'https://empresas.ioasys.com.br/' + photo;
 
+ /**
+ * Envia como evento para o componente pai, as informações da empresa escolhida
+ */
     const activeCard = () => {
         props.onCardChange(enterprise)
     }

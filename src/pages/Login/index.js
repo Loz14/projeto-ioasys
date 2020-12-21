@@ -60,7 +60,11 @@ function Login() {
 
 
 
-    //confere campos e retorna erros, caso existam
+/**
+ * Checa se o login é válido
+ * @prop String email, password
+ * @returns errors
+ */
     const validateLoginForm = (e) => {
 
         let errors = {};
@@ -87,6 +91,11 @@ function Login() {
         }
     };
 
+/**
+ * Escuta o evento enter do teclado
+ * @prop Event event
+ * @returns void
+ */
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
             login(event)
@@ -94,7 +103,11 @@ function Login() {
     }
 
 
-    //função chamada ao clicar em entrar
+/**
+ * Função que faz o post request com a api para validar o login
+ * @prop event e
+ * @returns void
+ */
     const login = (e) => {
         setLoading(true);
         e.preventDefault();
@@ -108,6 +121,7 @@ function Login() {
                     api.defaults.headers.common['uid'] = res.headers['uid']
                     api.defaults.headers.common['client'] = res.headers['client']
                     setLoading(false);
+                    //seta no localStorage as informações válidas de login
                     localStorage.setItem('keep-logged', JSON.stringify({ email: values.email, password: values.password }))
                     history.push('/enterprise')
 

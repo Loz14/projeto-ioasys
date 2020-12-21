@@ -9,6 +9,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { FormControl, InputAdornment, Input, Button, IconButton, withStyles } from '@material-ui/core';
 
+//Estilização do campo de busca
 const FormControlStyled = withStyles({
     root: {
         '& label.Mui-focused': {
@@ -34,6 +35,9 @@ const Enterprises = () => {
         setSearch({ ...search, active: true })
     }
 
+/**
+ * Escuto o evento keyPress do teclado e ao ser 'enter', ele chama a função busca
+*/
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
             setFiltered(true)
@@ -49,6 +53,9 @@ const Enterprises = () => {
         setSearch({ ...search, value: '' })
     }
 
+/**
+ * Busca Empresa pelo nome passado
+*/
     const getEnterprisesByName = async () => {
         try {
             const response = await api.get(`enterprises?name=${search.value}`, {
