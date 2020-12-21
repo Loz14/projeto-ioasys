@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import clsx from 'clsx';
 import './style.css';
 import { FormControl, InputAdornment, Input, IconButton, Button, FormHelperText, CircularProgress } from '@material-ui/core';
@@ -9,6 +9,7 @@ import API from '../../services/api';
 import { useHistory } from 'react-router-dom'
 import api from "../../services/api";
 import ResponsiveImage from "../../components/ResponsiveImage";
+import Loading from "../../components/Loading";
 
 //styles utilizados dentro do FormControl
 const useStyles = makeStyles((theme) => ({
@@ -36,9 +37,9 @@ const getValuesFromStorage = () => {
 function Login() {
     const history = useHistory();
     const classes = useStyles();
-    const [loading, setLoading] = React.useState(false);
+    const [loading, setLoading] = useState(false);
     const info = getValuesFromStorage();
-    const [values, setValues] = React.useState({
+    const [values, setValues] = useState({
         email: (info.email || ''),
         password: (info.password || ''),
         showPassword: false,
@@ -149,7 +150,7 @@ function Login() {
 
     return (
         <div className="Login">
-            {loading ? <div id="overlay"> <CircularProgress style={{ width: '65px', height: '65px', color: '#57bbbc' }} /> </div> : null}
+            {loading ? <Loading/> : null}
             <div className="container">
                 <div className="card-login">
                     <div className="centralize div-logo">
