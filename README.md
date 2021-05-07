@@ -1,5 +1,5 @@
 <h1 align="center">Projeto Empresas</h1>
-<p align="center">projeto teste da empresa ioasys focado em ReactJS</p>
+<p align="center">focado em ReactJS</p>
 
 <p align="center">
  <a href="#-sobre">Sobre</a> •
@@ -17,7 +17,7 @@
 
 ### 💻 Sobre
 
-Projeto Empresas - É um teste proposto pela empresa ioasys onde terá que ser feito um login utilizando de OAuth 2.0 para autenticação
+Projeto Empresas - terá que ser feito um login utilizando de OAuth 2.0 para autenticação
 e uma listagem de algumas empresas através de um campo de busca!
 
 ---
